@@ -6,3 +6,7 @@
 .card {
     margin-right: 10px;
 }
+
+.hide {
+    display: none;
+}

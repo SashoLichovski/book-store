@@ -30,7 +30,7 @@
 
             <div class="form-group">
               <label for="bookTitle">Book Title</label>
-              <input type="text" class="form-control" id="bookTitle" aria-describedby="emailHelp">
+              <input type="text" class="form-control" id="title">
             </div>
 
             <div class="form-group">
@@ -54,17 +54,34 @@
             </div>
 
             <div class="form-group">
-                <label for="pages">Number of pages</label>
-                <select id="bookType" class="form-control">
+                <label for="pages">Book type</label>
+                <select id="bookType" class="form-control" onchange="toggle(event)">
                     <option value="fantasy">Fantasy</option>
                     <option value="history">History</option>
                     <option value="classic">Classic</option>
                 </select>
             </div>
 
+            <div class="form-group" id="fantasy">
+              <label for="planet">Planet</label>
+              <input type="text" class="form-control" id="planet">
+            </div>
+
+            <div class="form-group hide" id="history">
+              <label for="year">Year</label>
+              <input type="number" class="form-control" id="year">
+            </div>
+
+            <div class="form-group hide" id="classic">
+              <label for="town">Town</label>
+              <input type="text" class="form-control" id="town">
+            </div>
+
+            
 
 
-            <button class="btn btn-primary" onclick="addBook(event)">Add</button>
+
+            <div class="btn btn-primary" onclick="addBook()">Add</div>
           </form>
       </div>
       

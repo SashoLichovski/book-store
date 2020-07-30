@@ -27,6 +27,13 @@ namespace BookStoreApi.Controllers
             return Ok(model);
         }
 
+        [HttpGet]
+        [Route("{id}/{bookType}")]
+        public IActionResult GetById(int id, string bookType)
+        {
+            return Ok();
+        }
+
         [HttpPut]
         public IActionResult Update(UpdateBookViewModel model)
         {
@@ -43,6 +50,7 @@ namespace BookStoreApi.Controllers
         }
 
         [HttpPost]
+        [Route("create")]
         public IActionResult Create(CreateBookViewModel model)
         {
             bookService.Create(model);

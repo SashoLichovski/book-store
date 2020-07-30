@@ -56,7 +56,7 @@ namespace BookStoreApi.Services
                     Amount = model.Amount,
                     NumberOfPages = model.NumberOfPages,
                     Price = model.Price,
-                    Year = model.Year
+                    //Year = model.Year
                 };
                 bookRepo.AddHistory(newBook);
             }
