@@ -1,0 +1,8 @@
+.container #historyBookContainer, #classicBookContainer, #fantasyBookContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-right: 10px;
+}
