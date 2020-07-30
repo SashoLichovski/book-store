@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookStoreApi.Data
+namespace BookStoreApi.Services.ViewModels
 {
-    public class Book
+    public class HistoryBookViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -15,5 +15,7 @@ namespace BookStoreApi.Data
         public double Price { get; set; }
         [Required]
         public int NumberOfPages { get; set; }
+        [Required]
+        public int Year { get; set; }
     }
 }

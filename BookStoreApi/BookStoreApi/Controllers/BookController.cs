@@ -22,8 +22,8 @@ namespace BookStoreApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-
-            return Ok(new { Test = "test" });
+            var model = bookService.GetAll();
+            return Ok(model);
         }
     }
 }
