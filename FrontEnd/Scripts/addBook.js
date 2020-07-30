@@ -1,4 +1,5 @@
 function addBook(event){
     event.preventDefaulty();
-    alert("it works")
+    console.log(event.target.innerText);
 }
+

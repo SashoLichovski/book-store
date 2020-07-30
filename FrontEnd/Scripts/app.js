@@ -3,9 +3,6 @@ axios.get('https://localhost:44384/api/book')
     var historyBooks = response.data.historyBooks;
     var classicBooks = response.data.classicBooks;
     var fantasyBooks = response.data.fantasyBooks;
-    console.log(historyBooks);
-    console.log(classicBooks);
-    console.log(fantasyBooks);
 
    displayHistoryBooks(historyBooks);
    displayClassicBooks(classicBooks);
@@ -51,6 +48,31 @@ function displayHistoryBooks(arr){
         cardYear.classList.add("card-text");
         cardYear.innerText = `Year: ${book.year}`;
         cardBody.appendChild(cardYear);
+
+        var deleteBtn = document.createElement("div");
+        deleteBtn.className = "btn btn-danger btn-sm";
+        deleteBtn.innerText = "delete";
+        deleteBtn.id = book.id;
+        deleteBtn.onclick = function(event){
+            axios.delete(`https://localhost:44384/api/book/delete/${event.target.id}/History`, )
+            .then(function(){
+                location.href = "./index.html"
+            })
+            .catch((error) => {
+              throw error.response.data
+            })
+        }
+        cardBody.appendChild(deleteBtn);
+
+        var updateBtn = document.createElement("div");
+        updateBtn.className = "btn btn-success btn-sm";
+        updateBtn.innerText = "Update";
+        updateBtn.id = book.id;
+        updateBtn.style.marginLeft = "10px";
+        updateBtn.onclick = function(){
+            location.href = "./updateBook.html"
+        }
+        cardBody.appendChild(updateBtn);
     });
 }
 
@@ -90,6 +112,32 @@ function displayClassicBooks(arr){
         cardTown.classList.add("card-text");
         cardTown.innerText = `Town: ${book.town}`;
         cardBody.appendChild(cardTown);
+        
+
+        var deleteBtn = document.createElement("div");
+        deleteBtn.className = "btn btn-danger btn-sm";
+        deleteBtn.innerText = "delete";
+        deleteBtn.id = book.id;
+        deleteBtn.onclick = function(event){
+            axios.delete(`https://localhost:44384/api/book/delete/${event.target.id}/Classic`, )
+            .then(function(){
+                location.href = "./index.html"
+            })
+            .catch((error) => {
+              throw error.response.data
+            })
+        }
+        cardBody.appendChild(deleteBtn);
+
+        var updateBtn = document.createElement("div");
+        updateBtn.className = "btn btn-success btn-sm";
+        updateBtn.innerText = "Update";
+        updateBtn.id = book.id;
+        updateBtn.style.marginLeft = "10px";
+        updateBtn.onclick = function(){
+            location.href = "./updateBook.html"
+        }
+        cardBody.appendChild(updateBtn);
     });
 }
 
@@ -129,5 +177,31 @@ function displayFantasyBooks(arr){
         cardPlanet.classList.add("card-text");
         cardPlanet.innerText = `Planet: ${book.planet}`;
         cardBody.appendChild(cardPlanet);
+
+        var deleteBtn = document.createElement("div");
+        deleteBtn.className = "btn btn-danger btn-sm";
+        deleteBtn.innerText = "delete";
+        deleteBtn.id = book.id;
+        deleteBtn.onclick = function(event){
+            axios.delete(`https://localhost:44384/api/book/delete/${event.target.id}/Fantasy`, )
+            .then(function(){
+                location.href = "./index.html"
+            })
+            .catch((error) => {
+              throw error.response.data
+            })
+        }
+        cardBody.appendChild(deleteBtn);
+
+        var updateBtn = document.createElement("div");
+        updateBtn.className = "btn btn-success btn-sm";
+        updateBtn.style.marginLeft = "10px";
+        updateBtn.innerText = "Update";
+        updateBtn.id = book.id;
+        updateBtn.onclick = function(){
+            location.href = "./updateBook.html"
+        }
+        cardBody.appendChild(updateBtn);
     });
 }
+
