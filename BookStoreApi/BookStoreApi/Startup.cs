@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStoreApi.Data;
+using BookStoreApi.Repositories;
+using BookStoreApi.Repositories.Interfaces;
+using BookStoreApi.Services;
+using BookStoreApi.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace BookStoreApi
 {
@@ -33,6 +30,16 @@ namespace BookStoreApi
             {
                 options.UseSqlServer(Configuration.GetConnectionString("BookStoreApi"));
             });
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IBookService, BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,8 @@ namespace BookStoreApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

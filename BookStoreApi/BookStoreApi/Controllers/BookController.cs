@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStoreApi.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,12 @@ namespace BookStoreApi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IBookService bookService;
 
+        public BookController(IBookService bookService)
+        {
+            this.bookService = bookService;
+        }
 
         [HttpGet]
         public IActionResult Get()
